@@ -6,12 +6,18 @@ import git_actions
 
 
 def _read_config():
+    """
+    :return: parsed configuration file data
+    """
     config = configparser.ConfigParser()
     config.read('config.ini')
     return config
 
 
 def _argument_parser():
+    """
+    :return: parsed command line arguments
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('-u', '--username', type=str, required=True)
     # parser.add_argument('-p', '--password', type=str, required=True)
@@ -20,7 +26,7 @@ def _argument_parser():
 
 def _get_user_info(user_data):
     """
-    :param user_data:
+    :param user_data: github user profile data
     :return:
     """
     for key, value in user_data.items():
@@ -29,7 +35,7 @@ def _get_user_info(user_data):
 
 def _get_usr_repos(repo_list):
     """
-    :param repo_list:
+    :param repo_list: user github repository list
     :return:
     """
     for repo in repo_list:

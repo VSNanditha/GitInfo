@@ -1,14 +1,15 @@
 import requests
+from requests.auth import HTTPBasicAuth
 
 
 def login(endpoint, username, password):
     """
-    :param endpoint:
+    :param endpoint: endpoint url
     :param username:
     :param password:
     :return:
     """
-    login = requests.get(endpoint, auth=(username, password))
+    login = requests.get(endpoint, auth=HTTPBasicAuth(username, password))
     if login.status_code != 200:
         return login.status_code, 'Bad Credentials!!'
     else:
